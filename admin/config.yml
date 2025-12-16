@@ -1,0 +1,50 @@
+backend:
+  name: git-gateway
+  branch: main
+  squash_merges: true
+
+media_folder: "assets/img"
+public_folder: "/assets/img"
+
+collections:
+  - name: "aluminio"
+    label: "Alumínio"
+    folder: "assets/img/aluminio"
+    create: true
+    slug: "{{slug}}"
+    extension: "json"
+    fields:
+      - { name: "title", label: "Título", widget: "string", required: false }
+      - { name: "image", label: "Imagem", widget: "image" }
+      - { name: "description_pt", label: "Descrição (PT)", widget: "text" }
+      - { name: "description_en", label: "Descrição (EN)", widget: "text" }
+      - { name: "description_es", label: "Descrição (ES)", widget: "text" }
+      - { name: "description_fr", label: "Descrição (FR)", widget: "text" }
+
+  - name: "construcoes"
+    label: "Construções"
+    folder: "assets/img/construcoes"
+    create: true
+    slug: "{{slug}}"
+    extension: "json"
+    fields:
+      - { name: "title", label: "Título", widget: "string", required: false }
+      - { name: "image", label: "Imagem", widget: "image" }
+      - { name: "description_pt", label: "Descrição (PT)", widget: "text" }
+      - { name: "description_en", label: "Descrição (EN)", widget: "text" }
+      - { name: "description_es", label: "Descrição (ES)", widget: "text" }
+      - { name: "description_fr", label: "Descrição (FR)", widget: "text" }
+
+  - name: "servicos"
+    label: "Serviços"
+    folder: "assets/img/servicos"
+    create: true
+    slug: "{{slug}}"
+    extension: "json"
+    fields:
+      - { name: "title", label: "Título", widget: "string", required: false }
+      - { name: "image", label: "Imagem", widget: "image" }
+      - { name: "description_pt", label: "Descrição (PT)", widget: "text" }
+      - { name: "description_en", label: "Descrição (EN)", widget: "text" }
+      - { name: "description_es", label: "Descrição (ES)", widget: "text" }
+      - { name: "description_fr", label: "Descrição (FR)", widget: "text" }

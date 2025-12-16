@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Admin - Netlify CMS</title>
+  </head>
+  <body>
+    <!-- Netlify CMS will load the config from /admin/config.yml -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+    <script>
+      // Initialize the Netlify Identity widget when available
+      if(window.netlifyIdentity){
+        window.netlifyIdentity.on('init', user => {
+          // noop
+        });
+        window.netlifyIdentity.init();
+      }
+    </script>
+    <div style="max-width:1000px;margin:20px auto;font-family:Arial,Helvetica,sans-serif">
+      <h2>CMS Admin (Netlify CMS)</h2>
+      <p>Use este painel para gerir imagens e descrições. Faça login via Netlify Identity (Git Gateway) quando necessário.</p>
+      <p>O Netlify CMS carrega a configuração em <code>admin/config.yml</code>.</p>
+    </div>
+  </body>
+</html>
