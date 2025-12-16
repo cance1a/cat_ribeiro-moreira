@@ -1,0 +1,1897 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Grupo Ribeiro & Moreira - Catálogo</title>
+<style>
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  overflow: hidden; /* scroll global desativado */
+  font-family: Arial, sans-serif;
+  background: #212121;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+body.light {
+  background: #f0f0f0;
+  color: #212121;
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 110px;
+  background: #0a0a0a;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0 12px 0;
+  z-index: 100;
+  box-sizing: border-box;
+}
+
+body.light .sidebar {
+  background: #e0e0e0;
+  color: #212121;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  align-items: center;
+  width: 100%;
+}
+
+.sidebar img.logo-small {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  color: #bbb;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  user-select: none;
+  transition: color 0.3s;
+  width: 100%;
+  text-align: center;
+  min-height: 54px;
+}
+
+.menu-item:hover,
+.menu-item.active {
+  color: #2c752c;
+}
+
+body.light .menu-item {
+  color: #555;
+}
+
+body.light .menu-item:hover,
+body.light .menu-item.active {
+  color: #1a5d1a;
+}
+
+.menu-item img.icon {
+  width: 26px;
+  height: 26px;
+  margin-bottom: 4px;
+  object-fit: contain;
+  display: block;
+}
+
+.languages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 2px;
+  width: 100%;
+  align-items: center;
+}
+
+.language-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid transparent;
+  box-shadow: 0 0 8px 2px transparent;
+  cursor: pointer;
+  transition: box-shadow 0.3s, border-color 0.3s;
+  margin-bottom: 0;
+}
+
+.language-btn.active,
+.language-btn:hover {
+  box-shadow: 0 0 8px 2px #2c752c;
+  border-color: #2c752c;
+}
+
+.language-btn img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* NOVO: Área scrollable */
+.main-content {
+  margin-left: 110px;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Conteúdos front e seções */
+.front, .section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.front {
+  background: url('img/background/background_2.jpg') center/cover no-repeat;
+  min-height: 100vh;
+}
+
+body.light .front {
+  background: none;
+  background-color: #dbeadf;
+}
+
+.logo {
+  position: absolute;
+  top: 28px;
+  right: 36px;
+  width: 130px;
+}
+
+h1 {
+  font-size: 2.3em;
+  margin: 0;
+}
+
+p {
+  font-size: 1.2em;
+  margin-top: 12px;
+}
+
+.option {
+  padding: 10px 18px;
+  font-size: 1.1em;
+  margin: 8px 0;
+  background: rgba(44,117,44,0.74);
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  transition: background 0.2s;
+}
+
+.option:hover {
+  background: rgba(44,117,44,0.93);
+}
+
+body.light .option {
+  background: rgba(44,117,44,0.54);
+  color: #eee;
+}
+
+body.light .option:hover {
+  background: rgba(44,117,44,0.75);
+  color: white;
+}
+
+.gate-category-list {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 28px;
+  margin-top: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.gate-category-btn {
+  padding: 11px 26px;
+  font-size: 1em;
+  font-weight: 700;
+  border-radius: 9px;
+  margin-right: 12px;
+  margin-bottom: 10px;
+  border: none;
+  background: #263b30;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px #1a1b1a10;
+}
+
+.gate-category-btn:hover,
+.gate-category-btn.active {
+  background: #2c752c;
+  color: #fff;
+  box-shadow: 0 2px 16px #1a5d1a30;
+}
+
+body.light .gate-category-btn {
+  background: #d5ead5;
+  color: #263b30;
+}
+
+body.light .gate-category-btn:hover,
+body.light .gate-category-btn.active {
+  background: #1a5d1a;
+  color: #fff;
+}
+
+.section {
+  padding: 30px 10px 10px 10px;
+  margin-bottom: 16px;
+  display: none;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: calc(100vh - 40px);
+}
+
+.project-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 10px;
+  justify-content: center;
+  width: 100%;
+}
+
+.project {
+  background: #232a2e;
+  border-radius: 8px;
+  padding: 13px;
+  width: 220px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s, transform 0.4s;
+  color: #fff;
+  box-sizing: border-box;
+  min-height: 260px;
+  max-width: 100%;
+}
+
+body.light .project {
+  background: #f1f1f1;
+  color: #202020;
+}
+
+.project.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project img {
+  width: 100%;
+  border-radius: 4px;
+  object-fit: cover;
+  margin-bottom: 8px;
+}
+
+#project-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+body.light #project-modal {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+#project-modal .modal-content {
+  position: relative;
+  background: #212121;
+  padding: 18px;
+  border-radius: 8px;
+  max-width: 92vw;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+body.light #project-modal .modal-content {
+  background: #fff;
+  color: #222;
+}
+
+#project-modal img {
+  max-width: 85vw;
+  max-height: 48vh;
+  border-radius: 4px;
+  cursor: grab;
+  touch-action: none;
+  margin-bottom: 10px;
+}
+
+#project-modal .modal-desc {
+  margin-top: 5px;
+  text-align: center;
+  max-width: 90vw;
+  word-wrap: break-word;
+}
+
+/* NOVO: botão fixo */
+.fixed-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 200;
+}
+
+
+/* Media Queries adaptadas */
+@media (max-width: 650px) {
+  .sidebar {
+    width: 60px;
+  }
+  .main-content {
+    margin-left: 60px;
+  }
+  .project {
+    width: 96vw;
+    min-width: unset;
+  }
+}
+
+@media (max-width: 450px) {
+  .sidebar {
+    width: 38px;
+  }
+  .main-content {
+    margin-left: 38px;
+  }
+  .project {
+    width: 98vw;
+  }
+  .menu-item span,
+  .menu-item {
+    font-size: 9px;
+  }
+}
+
+/* ===== AJUSTES FINAIS (não mexem no HTML/JS) ===== */
+
+/* 1) Compensar a sidebar para o conteúdo ficar centrado no espaço útil */
+.front, .section {
+  padding-left: 110px;
+}
+@media (max-width: 650px) {
+  .front, .section { padding-left: 60px; }
+}
+@media (max-width: 450px) {
+  .front, .section { padding-left: 38px; }
+}
+
+/* 2) Scroll só dentro da lista de projetos (página continua sem scroll) */
+.section { overflow: hidden; } /* mantém a secção sem scroll */
+.project-list {
+  overflow-y: auto;                 /* scroll aqui */
+  max-height: calc(100vh - 220px);  /* espaço livre abaixo do título+tabs */
+  margin: 0 auto;                   /* garante centragem do container */
+  justify-content: center;          /* (já tinhas, reforço) */
+}
+
+/* 3) Suavizar em ecrãs pequenos para não “colar” à esquerda */
+@media (max-width: 650px) {
+  .project-list { max-height: calc(100vh - 210px); }
+}
+@media (max-width: 450px) {
+  .project-list { max-height: calc(100vh - 200px); }
+}
+</style>
+
+<!-- INTRO VIDEO (substitui showroom) -->
+<style>
+  #intro-video-container {
+    position: fixed;
+    inset: 0;
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    transition: opacity 0.8s ease;
+  }
+  #intro-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+  }
+  #intro-video-container.fade-out {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .project img {
+  width: 100%;
+  height: 240px; /* aumenta a altura */
+  border-radius: 6px;
+  object-fit: cover; /* mantém proporções sem distorcer */
+  margin-bottom: 0;  /* remove espaço extra */
+}
+
+.project {
+  min-height: 200px; /* igual à altura da imagem */
+  padding: 10px;
+}
+
+  
+</style>
+
+
+</head>
+<body>
+<!-- Tela inicial com vídeo -->
+<div id="intro-video-container">
+  <video id="intro-video" autoplay muted playsinline>
+    <source src="video/videoPromo.mp4" type="video/mp4" />
+    O seu navegador não suporta vídeo HTML5.
+  </video>
+</div>
+
+
+
+<div class="sidebar" aria-label="Main sidebar" role="navigation">
+  <div class="menu" role="menu" aria-label="Main menu">
+    <div class="menu-item" onclick="showSection('Home')" id="icon-home" role="button" tabindex="0" aria-label="Home Section">
+      <img src="img/logo_rb/logo_5.png" alt="Home Icon" class="icon" />
+      <span id="menu-home-label">Home</span>
+    </div>
+    <div class="menu-item" onclick="showSection('Aluminum')" id="icon-al" role="button" tabindex="0" aria-label="Aluminum Section">
+      <img src="img/logo_rb/logo_alum.png" alt="Aluminum Icon" class="icon" />
+      <span id="menu-al-label">Alumínio</span>
+    </div>
+    <div class="menu-item" onclick="showSection('MetalConstructions')" id="icon-co" role="button" tabindex="0" aria-label="Metal Constructions Section">
+      <img src="img/logo_rb/logo_co.png" alt="Metal Constructions Icon" class="icon" />
+      <span id="menu-co-label">Construções Metálicas</span>
+    </div>
+    <div class="menu-item" onclick="showSection('MetalSolutions')" id="icon-sm" role="button" tabindex="0" aria-label="Metal Solutions Section">
+      <img src="img/logo_rb/logo_sm.png" alt="Metal Solutions Icon" class="icon" />
+      <span id="menu-sm-label">Serviços Metálicos</span>
+    </div>
+  </div>
+  <div class="languages" role="navigation" aria-label="Language selection">
+    <div class="language-btn" onclick="setLanguage('pt')" id="lang-pt" role="button" tabindex="0" aria-label="Portuguese Language">
+      <img src="img/bandeiras/bandeira_port.webp" alt="Portuguese Flag" />
+    </div>
+    <div class="language-btn" onclick="setLanguage('en')" id="lang-gb" role="button" tabindex="0" aria-label="English Language">
+      <img src="img/bandeiras/bandeira_uk.png" alt="English Flag" />
+    </div>
+    <div class="language-btn" onclick="setLanguage('es')" id="lang-es" role="button" tabindex="0" aria-label="Spanish Language">
+      <img src="img/bandeiras/bandeira_esp.png" alt="Spanish Flag" />
+    </div>
+    <div class="language-btn" onclick="setLanguage('fr')" id="lang-fr" role="button" tabindex="0" aria-label="French Language">
+      <img src="img/bandeiras/bandeira_fra.png" alt="French Flag" />
+    </div>
+  </div>
+</div>
+
+<div class="front" id="Home" role="main" aria-label="Home section">
+  <img src="img/logo_rb/logo_1.webp" alt="Logo Ribeiro & Moreira" class="logo" />
+  <div>
+    <h1 id="title-main">Bem-vindo ao Grupo Ribeiro & Moreira</h1>
+    <p id="subtitle-main">Aluminios, Construções Metálicas, Serviços Metálicos</p>
+    <button class="option" id="btn-aluminio" onclick="showSection('Aluminum')">Alumínio</button>
+    <button class="option" id="btn-construcoes" onclick="showSection('MetalConstructions')">Construções Metálicas</button>
+    <button class="option" id="btn-solucoes" onclick="showSection('MetalSolutions')">Serviços Metálicos</button>
+  </div>
+</div>
+
+<div id="sections-container" aria-live="polite"></div>
+
+<div id="project-modal" aria-hidden="true" aria-labelledby="modal-description" role="dialog">
+  <div class="modal-content" role="document">
+    <img id="modal-img" src="" alt="Project image" />
+    <button id="btn-fullscreen" title="Tela cheia" aria-label="Tela cheia" style="
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(44,117,44,0.7);
+      border: none;
+      border-radius: 4px;
+      color: white;
+      padding: 4px 8px;
+      font-size: 16px;
+      cursor: pointer;
+      z-index: 10;
+      user-select: none;
+    ">
+      ⛶
+    </button>
+    <div class="modal-desc" id="modal-description"></div>
+  </div>
+</div>
+
+<script>
+'use strict';
+
+// Alteração principal no array cm_feCategories com títulos distintos para subseções da secção Construções Metálicas:
+const cm_feCategories = [
+  { 
+    id: 'estrutura_fe', 
+    prefix: 'est_m-', 
+    titles: { 
+      pt: 'Estrutura', 
+      en: 'Structure', 
+      es: 'Estructura', 
+      fr: 'Structure' 
+    } 
+  },
+  { 
+    id: 'escadas_fe', 
+    prefix: 'esc_m-', 
+    titles: { 
+      pt: 'Escadas', 
+      en: 'Stairs', 
+      es: 'Escaleras', 
+      fr: 'Escaliers' 
+    } 
+  },
+  { 
+    id: 'guardas_fe', 
+    prefix: 'gua_m-', 
+    titles: { 
+      pt: 'Guardas', 
+      en: 'Railings', 
+      es: 'Barandillas', 
+      fr: 'Garde-corps' 
+    } 
+  },
+  { 
+    id: 'portoes_fe', 
+    prefix: 'fepo_m-', 
+    titles: { 
+      pt: 'Portões', 
+      en: 'Gates', 
+      es: 'Portones', 
+      fr: 'Portails' 
+    } 
+  },
+  { 
+    id: 'tapavistas_fe', 
+    prefix: 'tapavistas_m-', 
+    titles: { 
+      pt: 'Tapa Vistas', 
+      en: 'Privacy Screens', 
+      es: 'Tapavistas', 
+      fr: 'Brise-vues' 
+    } 
+  }
+];
+
+const aluminumCategories = [
+  { 
+    id: 'portoes', 
+    prefix: 'alpo-', 
+    titles: { 
+      pt: 'Portões', 
+      en: 'Gates', 
+      es: 'Portones', 
+      fr: 'Portails' 
+    } 
+  },
+  { 
+    id: 'tapavistas', 
+    prefix: 'altapa_vistas-', 
+    titles: { 
+      pt: 'Tapa Vistas', 
+      en: 'Privacy Screens', 
+      es: 'Tapavistas', 
+      fr: 'Brise-vues' 
+    } 
+  },
+  { 
+    id: 'claraboias', 
+    prefix: 'alclaraboia-', 
+    titles: { 
+      pt: 'Claraboias', 
+      en: 'Skylights', 
+      es: 'Claraboyas', 
+      fr: 'Verrières' 
+    } 
+  },
+  { 
+    id: 'caixilharia', 
+    prefix: 'alcaixilharia-', 
+    titles: { 
+      pt: 'Caixilharia', 
+      en: 'Frames', 
+      es: 'Carpintería', 
+      fr: 'Châssis' 
+    } 
+  }
+];
+
+const metalSolutionsCategories = [
+  { 
+    id: 'corte_laser', 
+    prefix: 'sol-corte_laser-', 
+    titles: { 
+      pt: 'Corte Laser', 
+      en: 'Laser Cutting', 
+      es: 'Corte Láser', 
+      fr: 'Découpe Laser' 
+    } 
+  },
+  { 
+    id: 'remates', 
+    prefix: 'sol-remates-', 
+    titles: { 
+      pt: 'Remates', 
+      en: 'Finishes', 
+      es: 'Acabados', 
+      fr: 'Finitions' 
+    } 
+  },
+  { 
+    id: 'quinagem', 
+    prefix: 'sol-quinagem-', 
+    titles: { 
+      pt: 'Quinagem', 
+      en: 'Bending', 
+      es: 'Doblado', 
+      fr: 'Pliage' 
+    } 
+  }
+];
+
+
+
+let projectsData = {
+
+// Alumínio - Portões
+  "alpo-1": {
+    images: ["img/img_al/portoes/foto_al_co_sm_po.png", "img/img_al/portoes/foto_al_co_sm_po_2.png", "img/img_al/portoes/foto_al_co_sm_po_3.png"],
+    descriptions: { pt: "Braga, 2025", en: "Braga, 2025", es: "Braga, 2025", fr: "Braga, 2025" },
+    title: { pt: "Portão Alumínio 1", en: "Aluminum Gate 1", es: "Portón Aluminio 1", fr: "Portail Aluminium 1" }
+  },
+  "alpo-2": {
+    images: ["img/img_al/portoes/foto_al_e_po.png", "img/img_al/portoes/foto_al_e_po_2.png"],
+    descriptions: { pt: "Porto, 2025", en: "Porto, 2025", es: "Oporto, 2025", fr: "Porto, 2025" },
+    title: { pt: "Portão Alumínio 2", en: "Aluminum Gate 2", es: "Portón Aluminio 2", fr: "Portail Aluminium 2" }
+  },
+  "alpo-3": {
+    images: ["img/img_al/portoes/2_foto_al_co_sm_po.png"],
+    descriptions: { pt: "Porto, 2025", en: "Porto, 2025", es: "Oporto, 2025", fr: "Porto, 2025" },
+    title: { pt: "Portão Alumínio 2", en: "Aluminum Gate 2", es: "Portón Aluminio 2", fr: "Portail Aluminium 2" }
+  },
+  "alpo-4": {
+    images: ["img/img_al/portoes/3_foto_po_al.jpg"],
+    descriptions: { pt: "Porto, 2025", en: "Porto, 2025", es: "Oporto, 2025", fr: "Porto, 2025" },
+    title: { pt: "Portão Alumínio 2", en: "Aluminum Gate 2", es: "Portón Aluminio 2", fr: "Portail Aluminium 2" }
+  },
+  "alpo-5": {
+    images: ["img/img_al/portoes/4_foto_po_al.jpg"],
+    descriptions: { pt: "Porto, 2025", en: "Porto, 2025", es: "Oporto, 2025", fr: "Porto, 2025" },
+    title: { pt: "Portão Alumínio 2", en: "Aluminum Gate 2", es: "Portón Aluminio 2", fr: "Portail Aluminium 2" }
+  },
+  "alpo-6": {
+    images: ["img/img_al/portoes/5_foto_po_al.jpg"],
+    descriptions: { pt: "Porto, 2025", en: "Porto, 2025", es: "Oporto, 2025", fr: "Porto, 2025" },
+    title: { pt: "Portão Alumínio 2", en: "Aluminum Gate 2", es: "Portón Aluminio 2", fr: "Portail Aluminium 2" }
+  },
+  "alpo-7": {
+    images: ["img/img_al/portoes/6_foto_po_al.jpg"],
+    descriptions: { pt: "Porto, 2025", en: "Porto, 2025", es: "Oporto, 2025", fr: "Porto, 2025" },
+    title: { pt: "Portão Alumínio 2", en: "Aluminum Gate 2", es: "Portón Aluminio 2", fr: "Portail Aluminium 2" }
+  },
+  "alpo-8": {
+    images: ["img/img_al/portoes/7_foto_po_al.jpg"],
+    descriptions: { pt: "Porto, 2025", en: "Porto, 2025", es: "Oporto, 2025", fr: "Porto, 2025" },
+    title: { pt: "Portão Alumínio 2", en: "Aluminum Gate 2", es: "Portón Aluminio 2", fr: "Portail Aluminium 2" }
+  },
+  "alpo-9": {
+    images: ["img/img_al/portoes/8_foto_po_al.jpg"],
+    descriptions: { pt: "Porto, 2025", en: "Porto, 2025", es: "Oporto, 2025", fr: "Porto, 2025" },
+    title: { pt: "Portão Alumínio 2", en: "Aluminum Gate 2", es: "Portón Aluminio 2", fr: "Portail Aluminium 2" }
+  },
+  "alpo-10": {
+    images: ["img/img_al/portoes/9_foto_po_al.jpg"],
+    descriptions: { pt: "Porto, 2025", en: "Porto, 2025", es: "Oporto, 2025", fr: "Porto, 2025" },
+    title: { pt: "Portão Alumínio 2", en: "Aluminum Gate 2", es: "Portón Aluminio 2", fr: "Portail Aluminium 2" }
+  },
+
+// Alumínio - Caixilharia
+  "alcaixilharia-1": {
+    images: ["img/img_al/caixilharia/caixilharia_1.jpg"],
+    descriptions: { pt: "Porto, 2025", en: "Porto, 2025", es: "Oporto, 2025", fr: "Porto, 2025" },
+    title: { pt: "Portão Alumínio 2", en: "Aluminum Gate 2", es: "Portón Aluminio 2", fr: "Portail Aluminium 2" }
+  },
+    "alcaixilharia-2": {
+    images: ["img/img_al/caixilharia/caixilharia_2.jpg"],
+    descriptions: { pt: "Porto, 2025", en: "Porto, 2025", es: "Oporto, 2025", fr: "Porto, 2025" },
+    title: { pt: "Portão Alumínio 2", en: "Aluminum Gate 2", es: "Portón Aluminio 2", fr: "Portail Aluminium 2" }
+  },
+    "alcaixilharia-3": {
+    images: ["img/img_al/caixilharia/caixilharia_3.jpg"],
+    descriptions: { pt: "Porto, 2025", en: "Porto, 2025", es: "Oporto, 2025", fr: "Porto, 2025" },
+    title: { pt: "Portão Alumínio 2", en: "Aluminum Gate 2", es: "Portón Aluminio 2", fr: "Portail Aluminium 2" }
+  },
+   "alcaixilharia-4": {
+    images: ["img/img_al/caixilharia/caixilharia_4.jpg"],
+    descriptions: { pt: "Porto, 2025", en: "Porto, 2025", es: "Oporto, 2025", fr: "Porto, 2025" },
+    title: { pt: "Portão Alumínio 2", en: "Aluminum Gate 2", es: "Portón Aluminio 2", fr: "Portail Aluminium 2" }
+  }, 
+    "alcaixilharia-5": {
+    images: ["img/img_al/caixilharia/1_caixilharia_1.jpg", "img/img_al/caixilharia/1_caixilharia_2.jpg", "img/img_al/caixilharia/1_caixilharia_3.jpg", "img/img_al/caixilharia/1_caixilharia_4.jpg"],
+    descriptions: { pt: "Porto, 2025", en: "Porto, 2025", es: "Oporto, 2025", fr: "Porto, 2025" },
+    title: { pt: "Portão Alumínio 2", en: "Aluminum Gate 2", es: "Portón Aluminio 2", fr: "Portail Aluminium 2" }
+  },
+      "alcaixilharia-6": {
+    images: ["img/img_al/caixilharia/2_caixilharia_1.jpg", "img/img_al/caixilharia/2_caixilharia_2.jpg", "img/img_al/caixilharia/2_caixilharia_3.jpg", "img/img_al/caixilharia/2_caixilharia_4.jpg", "img/img_al/caixilharia/2_caixilharia_5"],
+    descriptions: { pt: "Porto, 2025", en: "Porto, 2025", es: "Oporto, 2025", fr: "Porto, 2025" },
+    title: { pt: "Portão Alumínio 2", en: "Aluminum Gate 2", es: "Portón Aluminio 2", fr: "Portail Aluminium 2" }
+  },
+// Alumínio - Claraboias
+  "alclaraboia-1": {
+    images: ["img/img_al/claraboias/claraboia_1.jpg"],
+    descriptions: { pt: "Obra em x-sitio e x-ano", en: "Project at x-site, x-year", es: "Obra en x-sitio, x-año", fr: "Travail à x-sitio et x-année" },
+    title: { pt: "Construção Residencial", en: "Modern Aluminum Stairs", es: "Escalera de Aluminio Moderna", fr: "Escalier en Aluminium Moderne" }
+  },
+    "alclaraboia-2": {
+    images: ["img/img_al/claraboias/claraboia_2.jpg"],
+    descriptions: { pt: "Obra em x-sitio e x-ano", en: "Project at x-site, x-year", es: "Obra en x-sitio, x-año", fr: "Travail à x-sitio et x-année" },
+    title: { pt: "Construção Residencial", en: "Modern Aluminum Stairs", es: "Escalera de Aluminio Moderna", fr: "Escalier en Aluminium Moderne" }
+  },
+    "alclaraboia-3": {
+    images: ["img/img_al/claraboias/claraboia_3.jpg"],
+    descriptions: { pt: "Obra em x-sitio e x-ano", en: "Project at x-site, x-year", es: "Obra en x-sitio, x-año", fr: "Travail à x-sitio et x-année" },
+    title: { pt: "Construção Residencial", en: "Modern Aluminum Stairs", es: "Escalera de Aluminio Moderna", fr: "Escalier en Aluminium Moderne" }
+  },
+
+// Alumínio - Gradeamentos
+  "altapa_vistas-1": {
+    images: ["img/img_al/tapavistas/1_tapavistas.jpg", "img/img_al/tapavistas/1_tapavistas_2.jpg"],
+    descriptions: { pt: "Obra em x-sitio e x-ano", en: "Project at x-site, x-year", es: "Obra en x-sitio, x-año", fr: "Travail à x-sitio et x-année" },
+    title: { pt: "Construção Residencial", en: "Modern Aluminum Stairs", es: "Escalera de Aluminio Moderna", fr: "Escalier en Aluminium Moderne" }
+  },
+
+// Alumínio - Escadas
+  "ale-1": {
+    images: ["img/img_al/escadas/escada_al_1.jpg"],
+    descriptions: { pt: "Porto, 2023", en: "Porto, 2023", es: "Oporto, 2023", fr: "Porto, 2023" },
+    title: { pt: "Guarda em Inox", en: "Stainless Steel Railing", es: "Barandilla de Acero Inoxidable", fr: "Garde-corps en Inox" }
+  },
+  "ale-2": {
+    images: ["img/img_al/escadas/escada_al_2.jpg"],
+    descriptions: { pt: "Porto, 2023", en: "Porto, 2023", es: "Oporto, 2023", fr: "Porto, 2023" },
+    title: { pt: "Guarda em Inox", en: "Stainless Steel Railing", es: "Barandilla de Acero Inoxidable", fr: "Garde-corps en Inox" }
+  },
+  "ale-3": {
+    images: ["img/img_al/escadas/2_escada_al_1.jpg", "img/img_al/escadas/2_escada_al_2.jpg", "img/img_al/escadas/2_escada_al_3.jpg"],
+    descriptions: { pt: "Braga, 2025", en: "Braga, 2025", es: "Braga, 2025", fr: "Braga, 2025" },
+    title: { pt: "Portão Automático", en: "Automatic Gate", es: "Portón Automático", fr: "Portail Automatique" }
+  },
+
+// Alumínio - Guardas
+  "alguardas-1": {
+    images: ["img/img_al/guardas/foto_guarda_al.jpg"],
+    descriptions: { pt: "Porto, 2023", en: "Porto, 2023", es: "Oporto, 2023", fr: "Porto, 2023" },
+    title: { pt: "Guarda em Inox", en: "Stainless Steel Railing", es: "Barandilla de Acero Inoxidable", fr: "Garde-corps en Inox" }
+  },
+  "alguardas-2": {
+    images: ["img/img_al/guardas/2_foto_guarda_al.jpg"],
+    descriptions: { pt: "Porto, 2023", en: "Porto, 2023", es: "Oporto, 2023", fr: "Porto, 2023" },
+    title: { pt: "Guarda em Inox", en: "Stainless Steel Railing", es: "Barandilla de Acero Inoxidable", fr: "Garde-corps en Inox" }
+  },
+  "alguardas-3": {
+    images: ["img/img_al/guardas/3_foto_guarda_al.jpg"],
+    descriptions: { pt: "Porto, 2023", en: "Porto, 2023", es: "Oporto, 2023", fr: "Porto, 2023" },
+    title: { pt: "Guarda em Inox", en: "Stainless Steel Railing", es: "Barandilla de Acero Inoxidable", fr: "Garde-corps en Inox" }
+  },
+  "alguardas-4": {
+    images: ["img/img_al/guardas/4_foto_guarda_al.jpg"],
+    descriptions: { pt: "Porto, 2023", en: "Porto, 2023", es: "Oporto, 2023", fr: "Porto, 2023" },
+    title: { pt: "Guarda em Inox", en: "Stainless Steel Railing", es: "Barandilla de Acero Inoxidable", fr: "Garde-corps en Inox" }
+  },
+  "alguardas-5": {
+    images: ["img/img_al/guardas/5_foto_guarda_al.jpg"],
+    descriptions: { pt: "Porto, 2023", en: "Porto, 2023", es: "Oporto, 2023", fr: "Porto, 2023" },
+    title: { pt: "Guarda em Inox", en: "Stainless Steel Railing", es: "Barandilla de Acero Inoxidable", fr: "Garde-corps en Inox" }
+  },
+  "alguardas-6": {
+    images: ["img/img_al/guardas/6_foto_guarda_al.jpg"],
+    descriptions: { pt: "Porto, 2023", en: "Porto, 2023", es: "Oporto, 2023", fr: "Porto, 2023" },
+    title: { pt: "Guarda em Inox", en: "Stainless Steel Railing", es: "Barandilla de Acero Inoxidable", fr: "Garde-corps en Inox" }
+  },
+  "alguardas-7": {
+    images: ["img/img_al/guardas/foto_sm_al.png"],
+    descriptions: { pt: "Porto, 2023", en: "Porto, 2023", es: "Oporto, 2023", fr: "Porto, 2023" },
+    title: { pt: "Guarda em Inox", en: "Stainless Steel Railing", es: "Barandilla de Acero Inoxidable", fr: "Garde-corps en Inox" }
+  },
+
+
+// Soluções Metálicas
+
+// Construções Metálicas - Estrutura
+  "est_m-1": { images:["img/img_cm_fe/estrutura_m/1_est_m_1.jpg", "img/img_cm_fe/estrutura_m/1_est_m_2.jpg", "img/img_cm_fe/estrutura_m/1_est_m_3.jpg", "img/img_cm_fe/estrutura_m/1_est_m_4.jpg"], 
+    descriptions:{pt:"Braga, 2025",en:"Braga, 2025",es:"Braga, 2025",fr:"Braga, 2025"}, 
+    title:{pt:"Portão Automático",en:"Automatic Gate",es:"Portón Automático",fr:"Portail Automatique"}
+  }, 
+  "est_m-2": { images:["img/img_cm_fe/estrutura_m/2_est_m_1.jpg", "img/img_cm_fe/estrutura_m/2_est_m_2.jpg", "img/img_cm_fe/estrutura_m/2_est_m_3.jpg"],
+    descriptions:{pt:"Braga, 2025",en:"Braga, 2025",es:"Braga, 2025",fr:"Braga, 2025"}, 
+    title:{pt:"Portão Automático",en:"Automatic Gate",es:"Portón Automático",fr:"Portail Automatique"}
+  }, 
+  "est_m-3": { images:["img/img_cm_fe/estrutura_m/3_est_m_1.jpg", "img/img_cm_fe/estrutura_m/3_est_m_2.jpg", "img/img_cm_fe/estrutura_m/3_est_m_3.jpg", "img/img_cm_fe/estrutura_m/3_est_m_4.jpg"], 
+    descriptions:{pt:"Braga, 2025",en:"Braga, 2025",es:"Braga, 2025",fr:"Braga, 2025"}, 
+    title:{pt:"Portão Automático",en:"Automatic Gate",es:"Portón Automático",fr:"Portail Automatique"}
+  }, 
+  "est_m-4": { images:["img/img_cm_fe/estrutura_m/4_est_m_1.jpg", "img/img_cm_fe/estrutura_m/4_est_m_2.jpg"], 
+    descriptions:{pt:"Braga, 2025",en:"Braga, 2025",es:"Braga, 2025",fr:"Braga, 2025"}, 
+    title:{pt:"Portão Automático",en:"Automatic Gate",es:"Portón Automático",fr:"Portail Automatique"}
+  }, 
+  "est_m-5": { images:["img/img_cm_fe/estrutura_m/est_m_1.jpg"], 
+    descriptions:{pt:"Braga, 2025",en:"Braga, 2025",es:"Braga, 2025",fr:"Braga, 2025"}, 
+    title:{pt:"Portão Automático",en:"Automatic Gate",es:"Portón Automático",fr:"Portail Automatique"}
+  }, 
+  "est_m-6": { images:["img/img_cm_fe/estrutura_m/est_m_2.jpg"], 
+    descriptions:{pt:"Braga, 2025",en:"Braga, 2025",es:"Braga, 2025",fr:"Braga, 2025"}, 
+    title:{pt:"Portão Automático",en:"Automatic Gate",es:"Portón Automático",fr:"Portail Automatique"}
+  }, 
+  "est_m-7": { images:["img/img_cm_fe/estrutura_m/est_m_3.jpg"], 
+    descriptions:{pt:"Braga, 2025",en:"Braga, 2025",es:"Braga, 2025",fr:"Braga, 2025"}, 
+    title:{pt:"Portão Automático",en:"Automatic Gate",es:"Portón Automático",fr:"Portail Automatique"}
+  }, 
+
+// Construções Metálicas - Escadas
+  "esc_m-1": { images:["img/img_cm_fe/escadas/1_escada_2.jpg", "img/img_cm_fe/escadas/1_escada_1jpg"], 
+    descriptions:{pt:"Braga, 2025",en:"Braga, 2025",es:"Braga, 2025",fr:"Braga, 2025"}, 
+    title:{pt:"Portão Automático",en:"Automatic Gate",es:"Portón Automático",fr:"Portail Automatique"}
+  }, 
+  "esc_m-2": { images:["img/img_cm_fe/escadas/2_escada_1.jpg", "img/img_cm_fe/escadas/2_escada_2.jpg"],
+    descriptions:{pt:"Braga, 2025",en:"Braga, 2025",es:"Braga, 2025",fr:"Braga, 2025"}, 
+    title:{pt:"Portão Automático",en:"Automatic Gate",es:"Portón Automático",fr:"Portail Automatique"}
+  }, 
+  "esc_m-3": { images:["img/img_cm_fe/escadas/3_escada_1.jpg", "img/img_cm_fe/escadas/3_escada_2.jpg"], 
+    descriptions:{pt:"Braga, 2025",en:"Braga, 2025",es:"Braga, 2025",fr:"Braga, 2025"}, 
+    title:{pt:"Portão Automático",en:"Automatic Gate",es:"Portón Automático",fr:"Portail Automatique"}
+  }, 
+  "esc_m-4": { images:["img/img_cm_fe/escadas/escada_1.jpg"], 
+    descriptions:{pt:"Braga, 2025",en:"Braga, 2025",es:"Braga, 2025",fr:"Braga, 2025"}, 
+    title:{pt:"Portão Automático",en:"Automatic Gate",es:"Portón Automático",fr:"Portail Automatique"}
+  }, 
+
+// Construções Metálicas - Guardas
+  "gua_m-1": { images:["img/img_cm_fe/guardas/1_gua_m_1.jpg", "img/img_cm_fe/guardas/1_gua_m_2.jpg"], 
+    descriptions:{pt:"Braga, 2025",en:"Braga, 2025",es:"Braga, 2025",fr:"Braga, 2025"}, 
+    title:{pt:"Portão Automático",en:"Automatic Gate",es:"Portón Automático",fr:"Portail Automatique"}
+  }, 
+  "gua_m-2": { images:["img/img_cm_fe/guardas/2_gua_m_2.jpg", "img/img_cm_fe/guardas/2_gua_m_1.jpg"],
+    descriptions:{pt:"Braga, 2025",en:"Braga, 2025",es:"Braga, 2025",fr:"Braga, 2025"}, 
+    title:{pt:"Portão Automático",en:"Automatic Gate",es:"Portón Automático",fr:"Portail Automatique"}
+  }, 
+  "gua_m-3": { images:["img/img_cm_fe/guardas/gua_m_1.jpg"], 
+    descriptions:{pt:"Braga, 2025",en:"Braga, 2025",es:"Braga, 2025",fr:"Braga, 2025"}, 
+    title:{pt:"Portão Automático",en:"Automatic Gate",es:"Portón Automático",fr:"Portail Automatique"}
+  }, 
+  "gua_m-4": { images:["img/img_cm_fe/guardas/gua_m_2.jpg"], 
+    descriptions:{pt:"Braga, 2025",en:"Braga, 2025",es:"Braga, 2025",fr:"Braga, 2025"}, 
+    title:{pt:"Portão Automático",en:"Automatic Gate",es:"Portón Automático",fr:"Portail Automatique"}
+  }, 
+  "gua_m-5": { images:["img/img_cm_fe/guardas/gua_m_3.jpg"], 
+    descriptions:{pt:"Braga, 2025",en:"Braga, 2025",es:"Braga, 2025",fr:"Braga, 2025"}, 
+    title:{pt:"Portão Automático",en:"Automatic Gate",es:"Portón Automático",fr:"Portail Automatique"}
+  },
+
+
+// Construções Metálicas - Portões
+  "fepo_m-1": { images:["img/img_cm_fe/portoes/1_por_m_1.jpg", "img/img_cm_fe/portoes/1_por_m_2.jpg"], 
+    descriptions:{pt:"Braga, 2025",en:"Braga, 2025",es:"Braga, 2025",fr:"Braga, 2025"}, 
+    title:{pt:"Portão Automático",en:"Automatic Gate",es:"Portón Automático",fr:"Portail Automatique"}
+  }, 
+  "fepo_m-2": { images:["img/img_cm_fe/portoes/2_por_m_1.jpg", "img/img_cm_fe/portoes/2_por_m_2.jpg"],
+    descriptions:{pt:"Braga, 2025",en:"Braga, 2025",es:"Braga, 2025",fr:"Braga, 2025"}, 
+    title:{pt:"Portão Automático",en:"Automatic Gate",es:"Portón Automático",fr:"Portail Automatique"}
+  }, 
+  "fepo_m-3": { images:["img/img_cm_fe/portoes/3_por_m_1.jpg", "img/img_cm_fe/portoes/3_por_m_2.jpg"], 
+    descriptions:{pt:"Braga, 2025",en:"Braga, 2025",es:"Braga, 2025",fr:"Braga, 2025"}, 
+    title:{pt:"Portão Automático",en:"Automatic Gate",es:"Portón Automático",fr:"Portail Automatique"}
+  }, 
+  "fepo_m-4": { images:["img/img_cm_fe/portoes/4_por_m_1.jpg", "img/img_cm_fe/portoes/4_por_m_2.jpg"], 
+    descriptions:{pt:"Braga, 2025",en:"Braga, 2025",es:"Braga, 2025",fr:"Braga, 2025"}, 
+    title:{pt:"Portão Automático",en:"Automatic Gate",es:"Portón Automático",fr:"Portail Automatique"}
+  }, 
+  "fepo_m-5": { images:["img/img_cm_fe/portoes/por_m_1.jpg"], 
+    descriptions:{pt:"Braga, 2025",en:"Braga, 2025",es:"Braga, 2025",fr:"Braga, 2025"}, 
+    title:{pt:"Portão Automático",en:"Automatic Gate",es:"Portón Automático",fr:"Portail Automatique"}
+  }, 
+
+// Construções Metálicas - Tapa Vistas
+"tapavistas_m-1": { images:["", "", ""], 
+    descriptions:{pt:"Braga, 2025",en:"Braga, 2025",es:"Braga, 2025",fr:"Braga, 2025"}, 
+    title:{pt:"Portão Automático",en:"Automatic Gate",es:"Portón Automático",fr:"Portail Automatique"}
+  }, 
+
+  // Soluções Metálicas
+
+// Soluções Metálicas - Remates
+  "sol-remates-1": { images:["img/img_ms/remates/remate_1.jpg"], 
+    descriptions:{pt:"Braga, 2025",en:"Braga, 2025",es:"Braga, 2025",fr:"Braga, 2025"}, 
+    title:{pt:"Portão Automático",en:"Automatic Gate",es:"Portón Automático",fr:"Portail Automatique"}
+  }, 
+  "sol-remates-2": { images:["img/img_ms/remates/remate_2.jpg"],
+    descriptions:{pt:"Braga, 2025",en:"Braga, 2025",es:"Braga, 2025",fr:"Braga, 2025"}, 
+    title:{pt:"Portão Automático",en:"Automatic Gate",es:"Portón Automático",fr:"Portail Automatique"}
+  }, 
+
+// Soluções Metálicas - Corte Laser
+"sol-corte_laser-1": { images:["", "", ""], 
+    descriptions:{pt:"Braga, 2025",en:"Braga, 2025",es:"Braga, 2025",fr:"Braga, 2025"}, 
+    title:{pt:"Portão Automático",en:"Automatic Gate",es:"Portón Automático",fr:"Portail Automatique"}
+  }, 
+  
+// Soluções Metálicas - Quinagem
+
+"sol-quinagem-1": { images:["", "", ""], 
+    descriptions:{pt:"Braga, 2025",en:"Braga, 2025",es:"Braga, 2025",fr:"Braga, 2025"}, 
+    title:{pt:"Portão Automático",en:"Automatic Gate",es:"Portón Automático",fr:"Portail Automatique"}
+  }, 
+};
+
+// Attempt to load up-to-date data from data/projectsData.json (overrides embedded data when available)
+(async function(){
+  try{
+    const resp = await fetch('data/projectsData.json', {cache:'no-store'});
+    if(resp.ok){
+      const j = await resp.json();
+      if(j && (j.aluminio || j.construcoes || j.servicos)){
+        projectsData = j;
+        console.info('projectsData.json loaded and applied');
+      }
+    }
+  }catch(e){ console.warn('projectsData.json not loaded', e); }
+})();
+
+  let currentLang = 'pt';
+let currentCm_feCategory = cm_feCategories[0].id;
+let currentAluminumCategory = aluminumCategories[0].id;
+let currentMetalSolutionsCategory = metalSolutionsCategories[0].id;
+
+const sectionsInfo = {
+  Aluminum: { name: 'Alumínio', prefix: null, categories: aluminumCategories },
+  MetalConstructions: { name: 'Construções Metálicas', prefix: null, categories: cm_feCategories },
+  MetalSolutions: { name: 'Serviços Metálicas', prefix: null, categories: metalSolutionsCategories }
+};
+
+
+function createProjectCard(projKey, projData) {
+  const projDiv = document.createElement('div');
+  projDiv.className = 'project';
+  projDiv.onclick = () => openModal(projKey);
+
+  const img = document.createElement('img');
+  img.src = projData.images && projData.images.length > 0 ? projData.images[0] : '';
+  img.alt = projData.title[currentLang] || 'Project image';
+  projDiv.appendChild(img);
+
+  //const titleDiv = document.createElement('div');
+ // titleDiv.className = 'project-title';
+//  titleDiv.id = 'title-' + projKey;
+//  titleDiv.innerText = projData.title[currentLang] || '';
+//  projDiv.appendChild(titleDiv);
+
+//  const descDiv = document.createElement('div');
+ // descDiv.className = 'project-desc';
+//  descDiv.id = 'desc-' + projKey;
+ // descDiv.innerText = projData.descriptions[currentLang] || '';
+ // projDiv.appendChild(descDiv);
+
+  return projDiv;
+}
+
+const container = document.getElementById('sections-container');
+
+Object.entries(sectionsInfo).forEach(([key, value]) => {
+  const section = document.createElement('div');
+  section.id = key;
+  section.className = 'section';
+
+  const h2 = document.createElement('h2');
+  h2.innerText = value.name;
+  section.appendChild(h2);
+
+  if (value.categories) {
+    const catList = document.createElement("div");
+    let catListClassId = "";
+    if (key === 'MetalConstructions') {
+      catListClassId = "cmfe-categories";
+    } else if (key === 'Aluminum') {
+      catListClassId = "alum-categories";
+    } else if (key === 'MetalSolutions') {
+      catListClassId = "metal-solutions-categories";
+    }
+    catList.className = catListClassId;
+    catList.id = catListClassId;
+
+    value.categories.forEach(cat => {
+      const btn = document.createElement("button");
+      btn.className = "gate-category-btn";
+      btn.innerText = cat.titles[currentLang];
+
+      btn.onclick = () => {
+        if (key === "MetalConstructions")
+          showGateProjects(cat.id, btn);
+        else if (key === "Aluminum")
+          showAluminumProjects(cat.id, btn);
+        else if (key === "MetalSolutions")
+          showMetalSolutionsProjects(cat.id, btn);
+      };
+
+      btn.id = (catListClassId === 'cmfe-categories' ? "cmfe" : catListClassId === 'alum-categories' ? "alum" : "metal-solutions") + "-cat-" + cat.id;
+
+      catList.appendChild(btn);
+    });
+
+    section.appendChild(catList);
+
+    const list = document.createElement('div');
+    list.className = 'project-list';
+    let listId = "";
+    if (key === 'MetalConstructions') {
+      listId = 'gate-project-list';
+    } else if (key === 'Aluminum') {
+      listId = 'alum-project-list';
+    } else if (key === 'MetalSolutions') {
+      listId = 'metal-solutions-project-list';
+    }
+    list.id = listId;
+    section.appendChild(list);
+  } else {
+    const list = document.createElement('div');
+    list.className = 'project-list';
+    Object.entries(projectsData).forEach(([projKey, projData]) => {
+      if (projKey.startsWith(value.prefix)) {
+        const projDiv = createProjectCard(projKey, projData);
+        list.appendChild(projDiv);
+      }
+    });
+    section.appendChild(list);
+  }
+
+  container.appendChild(section);
+});
+
+
+
+function showGateProjects(categoryId, btn) {
+  const list = document.getElementById('gate-project-list');
+  if (!list) return;
+  list.innerHTML = '';
+
+  document.querySelectorAll('#cmfe-categories .gate-category-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  const cat = cm_feCategories.find(c => c.id === categoryId);
+  if (!cat) return;
+
+  Object.entries(projectsData).forEach(([key, proj]) => {
+    if (key.startsWith(cat.prefix)) {
+      const div = createProjectCard(key, proj);
+      list.appendChild(div);
+    }
+  });
+
+  list.querySelectorAll('.project').forEach((proj, i) => {
+    setTimeout(() => proj.classList.add('show'), i * 120);
+  });
+  
+    // vai de portoes de ferro psra portoes de aluminio
+  if (categoryId === 'portoes_fe') {
+    const btnRelated = document.createElement('button');
+    btnRelated.id = 'btn-ver-portoes'; // ID fixo para tradução
+    btnRelated.className = 'gate-category-btn';
+    btnRelated.innerText = 'Ver Portoes de Aluminio';
+    btnRelated.onclick = () => {
+      currentAluminumCategory = 'portoes';
+      showSection('Aluminum', 'portoes');
+    };
+    let actions = list.parentElement.querySelector('.project-actions');
+if (!actions) {
+  actions = document.createElement('div');
+  actions.className = 'project-actions';
+  list.after(actions);
+} else {
+  actions.innerHTML = ''; // limpa botões antigos
+}
+actions.appendChild(btnRelated);
+  }
+  
+  // vai de tapavistas de ferro psra tapavistas de aluminio
+  if (categoryId === 'tapavistas_fe') {
+    const btnRelated = document.createElement('button');
+    btnRelated.id = 'btn-ver-tapavistas'; // ID fixo para tradução
+    btnRelated.className = 'gate-category-btn';
+    btnRelated.innerText = 'Ver Tapa Vistas de Aluminio';
+    btnRelated.onclick = () => {
+      currentAluminumCategory = 'tapavistas';
+      showSection('Aluminum', 'tapavistas');
+    };
+    let actions = list.parentElement.querySelector('.project-actions');
+if (!actions) {
+  actions = document.createElement('div');
+  actions.className = 'project-actions';
+  list.after(actions);
+} else {
+  actions.innerHTML = ''; // limpa botões antigos
+}
+actions.appendChild(btnRelated);
+  }
+  
+  if (categoryId === 'tapavistas_fe') {
+    const btnRelated = document.createElement('button');
+    btnRelated.id = 'btn-ver-portoes'; // ID fixo para tradução
+    btnRelated.className = 'gate-category-btn';
+    btnRelated.innerText = 'Ver Portoes de Aluminio';
+    btnRelated.onclick = () => {
+      currentAluminumCategory = 'portoes';
+      showSection('Aluminum', 'portoes');
+    };
+    let actions = list.parentElement.querySelector('.project-actions');
+if (!actions) {
+  actions = document.createElement('div');
+  actions.className = 'project-actions';
+  list.after(actions);
+} else {
+  actions.innerHTML = ''; // limpa botões antigos
+}
+actions.appendChild(btnRelated);
+  }
+  
+    // escadas para guardas de ferro
+   if (categoryId === 'escadas_fe') {
+    const btnRelated = document.createElement('button');
+    btnRelated.id = 'btn-ver-guardas-ferro'; // ID fixo para tradução
+    btnRelated.className = 'gate-category-btn';
+    btnRelated.innerText = 'Ver Guardas de Ferro';
+    btnRelated.onclick = () => {
+      currentCm_feCategory = 'guardas_fe';
+      showSection('MetalConstructions', 'guardas_fe');
+    };
+    let actions = list.parentElement.querySelector('.project-actions');
+if (!actions) {
+  actions = document.createElement('div');
+  actions.className = 'project-actions';
+  list.after(actions);
+} else {
+  actions.innerHTML = ''; // limpa botões antigos
+}
+actions.appendChild(btnRelated);
+  }
+  
+  if (categoryId === 'guardas_fe') {
+    const btnRelated = document.createElement('button');
+    btnRelated.id = 'btn-ver-escadas-ferro'; // ID fixo para tradução
+    btnRelated.className = 'gate-category-btn';
+    btnRelated.innerText = 'Ver Escadas de Ferro';
+    btnRelated.onclick = () => {
+      currentCm_feCategory = 'escadas_fe';
+      showSection('MetalConstructions', 'escadas_fe');
+    };
+    let actions = list.parentElement.querySelector('.project-actions');
+if (!actions) {
+  actions = document.createElement('div');
+  actions.className = 'project-actions';
+  list.after(actions);
+} else {
+  actions.innerHTML = ''; // limpa botões antigos
+}
+actions.appendChild(btnRelated);
+  }
+  
+  
+}
+
+function showAluminumProjects(categoryId, btn) {
+  const list = document.getElementById('alum-project-list');
+  if (!list) return;
+
+  // 🔄 Limpa a lista de projetos anterior
+  list.innerHTML = '';
+
+  // 🔄 Remove botões antigos (evita botões pendurados entre categorias)
+  const oldActions = list.parentElement.querySelector('.project-actions');
+  if (oldActions) oldActions.remove();
+
+  // 🔄 Atualiza botão ativo no topo
+  document.querySelectorAll('#alum-categories .gate-category-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  // 🔍 Encontra prefixo da categoria atual
+  const cat = aluminumCategories.find(c => c.id === categoryId);
+  if (!cat) return;
+
+  // 🧱 Cria cards dos projetos corretos
+  Object.entries(projectsData).forEach(([key, proj]) => {
+    if (key.startsWith(cat.prefix)) {
+      const card = createProjectCard(key, proj);
+      list.appendChild(card);
+    }
+  });
+
+  // ✨ Efeito de entrada animado nos cards
+  list.querySelectorAll('.project').forEach((proj, i) => {
+    setTimeout(() => proj.classList.add('show'), i * 120);
+  });
+
+  // 📦 Cria a área de botões de ação (cross-links)
+  const actions = document.createElement('div');
+  actions.className = 'project-actions';
+  list.parentElement.appendChild(actions);
+
+  // 🟩 BOTÕES DE LIGAÇÃO CRUZADA — APENAS ONDE É SUPPOSTO
+  if (categoryId === 'portoes') {
+    // 🔸 "Ver Portões de Ferro"
+    const btnRelated = document.createElement('button');
+    btnRelated.id = 'btn-ver-portoes-ferro';
+    btnRelated.className = 'gate-category-btn';
+    btnRelated.innerText = 'Ver Portões de Ferro';
+    btnRelated.onclick = () => {
+      currentCm_feCategory = 'portoes_fe';
+      showSection('MetalConstructions', 'portoes_fe');
+    };
+    actions.appendChild(btnRelated);
+  } 
+  else if (categoryId === 'tapavistas') {
+    // 🔸 "Ver Tapa Vistas de Ferro"
+    const btnRelated = document.createElement('button');
+    btnRelated.id = 'btn-ver-tapavistas-ferro';
+    btnRelated.className = 'gate-category-btn';
+    btnRelated.innerText = 'Ver Tapa Vistas de Ferro';
+    btnRelated.onclick = () => {
+      currentCm_feCategory = 'tapavistas_fe';
+      showSection('MetalConstructions', 'tapavistas_fe');
+    };
+    actions.appendChild(btnRelated);
+  }
+
+  // 🚫 Nenhum botão aparece nas Claraboias nem na Caixilharia
+}
+
+
+
+function showMetalSolutionsProjects(categoryId, btn) {
+  const list = document.getElementById('metal-solutions-project-list');
+  if (!list) return;
+  list.innerHTML = '';
+
+  document.querySelectorAll('#metal-solutions-categories .gate-category-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  const cat = metalSolutionsCategories.find(c => c.id === categoryId);
+  if (!cat) return;
+
+  Object.entries(projectsData).forEach(([key, proj]) => {
+    if (key.startsWith(cat.prefix)) {
+      const div = createProjectCard(key, proj);
+      list.appendChild(div);
+    }
+  });
+
+  list.querySelectorAll('.project').forEach((proj, i) => {
+    setTimeout(() => proj.classList.add('show'), i * 120);
+  });
+}
+
+function showSection(sectionId, categoryId = null) {
+  const home = document.getElementById('Home');
+  const allSections = [...document.querySelectorAll('.section'), home];
+  allSections.forEach(sec => {
+    if (!sec) return;
+    if (sec.id !== sectionId) {
+      sec.style.display = 'none';
+      sec.querySelectorAll('.project').forEach(p => p.classList.remove('show'));
+    }
+  });
+
+  const newSec = sectionId === 'Home' ? home : document.getElementById(sectionId);
+  if (!newSec) return;
+
+  newSec.style.display = sectionId === 'Home' ? 'flex' : 'block';
+
+  if (sectionId !== 'Home') {
+    if (sectionId === 'MetalConstructions') {
+      if (categoryId) {
+        showGateProjects(categoryId, document.getElementById('cmfe-cat-' + categoryId));
+      } else if (currentCm_feCategory) {
+        showGateProjects(currentCm_feCategory, document.getElementById('cmfe-cat-' + currentCm_feCategory));
+      }
+    }
+    if (sectionId === 'Aluminum') {
+      if (currentAluminumCategory) {
+        showAluminumProjects(currentAluminumCategory, document.getElementById('alum-cat-' + currentAluminumCategory));
+      }
+    }
+    if (sectionId === 'MetalSolutions') {
+      if (currentMetalSolutionsCategory) {
+        showMetalSolutionsProjects(currentMetalSolutionsCategory, document.getElementById('metal-solutions-cat-' + currentMetalSolutionsCategory));
+      }
+    }
+
+    const projects = newSec.querySelectorAll('.project');
+    projects.forEach((proj, i) => {
+      setTimeout(() => proj.classList.add('show'), i * 150);
+    });
+  }
+
+  document.querySelectorAll('.menu-item').forEach(mi => mi.classList.remove('active'));
+  const menuMap = { Home: 'icon-home', Aluminum: 'icon-al', MetalConstructions: 'icon-co', MetalSolutions: 'icon-sm'};
+  const menuId = menuMap[sectionId];
+  if (menuId) {
+    const el = document.getElementById(menuId);
+    if (el) el.classList.add('active');
+  }
+}
+
+// restante código do modal, setLanguage, etc. permanece igual como você já tinha
+const translations = {
+  pt: {
+    sections: {
+      Aluminum: 'Alumínio',
+      MetalConstructions: 'Construções Metálicas',
+      MetalSolutions: 'Serviços Metálicos'
+    },
+    home: {
+      title: 'Bem-vindo ao Grupo Ribeiro & Moreira',
+      subtitle: 'Aluminios, Construções Metálicas, Serviços Metálicos',
+      buttons: {
+        alum: 'Alumínio',
+        constr: 'Construções',
+        sol: 'Serviços Metálicos'
+      }
+    },
+    menu: {
+      home: 'Home',
+      alum: 'Alumínio',
+      constr: 'Construções Metálicas',
+      sol: 'Serviços Metálicos'
+    }
+  },
+  en: {
+    sections: {
+      Aluminum: 'Aluminum',
+      MetalConstructions: 'Metal Constructions',
+      MetalSolutions: 'Metal Services'
+    },
+    home: {
+      title: 'Welcome to Grupo Ribeiro & Moreira',
+      subtitle: 'Metal Constructions, Metal Services',
+      buttons: {
+        alum: 'Aluminum',
+        constr: 'Constructions',
+        sol: 'Metal Services'
+      }
+    },
+    menu: {
+      home: 'Home',
+      alum: 'Aluminum',
+      constr: 'Metal Constructions',
+      sol: 'Metal Services'
+    }
+  },
+  es: {
+    sections: {
+      Aluminum: 'Aluminio',
+      MetalConstructions: 'Construcciones Metálicas',
+      MetalSolutions: 'Servicios Metálicos'
+    },
+    home: {
+      title: 'Bienvenido al Grupo Ribeiro & Moreira',
+      subtitle: 'Construcciones Metálicas, Servicios Metálicos',
+      buttons: {
+        alum: 'Aluminio',
+        constr: 'Construcciones',
+        sol: 'Servicios Metálicos'
+      }
+    },
+    menu: {
+      home: 'Inicio',
+      alum: 'Aluminio',
+      constr: 'Construcciones Metálicas',
+      sol: 'Servicios Metálicos'
+    }
+  },
+  fr: {
+    sections: {
+      Aluminum: 'Aluminium',
+      MetalConstructions: 'Constructions Métalliques',
+      MetalSolutions: 'Services Métalliques'
+    },
+    home: {
+      title: 'Bienvenue au Groupe Ribeiro & Moreira',
+      subtitle: 'Constructions Métalliques, Services Métalliques',
+      buttons: {
+        alum: 'Aluminium',
+        constr: 'Constructions',
+        sol: 'Services Métalliques'
+      }
+    },
+    menu: {
+      home: 'Accueil',
+      alum: 'Aluminium',
+      constr: 'Constructions Métalliques',
+      sol: 'Services Métalliques'
+    }
+  }
+};
+ 
+function setLanguage(lang) {
+  currentLang = lang;
+
+  // Atualiza títulos e descrições dos projetos
+  document.querySelectorAll('.project-title').forEach((titleDiv) => {
+    const key = titleDiv.id.replace('title-', '');
+    if (projectsData[key] && projectsData[key].title) {
+      titleDiv.innerText = projectsData[key].title[lang] || '';
+    }
+  });
+
+  document.querySelectorAll('.project-desc').forEach((descDiv) => {
+    const key = descDiv.id.replace('desc-', '');
+    if (projectsData[key] && projectsData[key].descriptions) {
+      descDiv.innerText = projectsData[key].descriptions[lang] || '';
+    }
+  });
+
+  // Atualiza botões das subcategorias
+  cm_feCategories.forEach((cat) => {
+    const btn = document.getElementById('cmfe-cat-' + cat.id);
+    if (btn) btn.innerText = cat.titles[lang] || cat.id;
+  });
+
+  aluminumCategories.forEach((cat) => {
+    const btn = document.getElementById('alum-cat-' + cat.id);
+    if (btn) btn.innerText = cat.titles[lang] || cat.id;
+  });
+
+  metalSolutionsCategories.forEach((cat) => {
+    const btn = document.getElementById('metal-solutions-cat-' + cat.id);
+    if (btn) btn.innerText = cat.titles[lang] || cat.id;
+  });
+
+  // Atualiza Home
+  const homeTexts = translations[lang].home;
+  document.getElementById('title-main').innerText = homeTexts.title;
+  document.getElementById('subtitle-main').innerText = homeTexts.subtitle;
+  document.getElementById('btn-aluminio').innerText = homeTexts.buttons.alum;
+  document.getElementById('btn-construcoes').innerText = homeTexts.buttons.constr;
+  document.getElementById('btn-solucoes').innerText = homeTexts.buttons.sol;
+
+  // Atualiza menu
+  const menuTexts = translations[lang].menu;
+  document.getElementById('menu-home-label').innerText = menuTexts.home;
+  document.getElementById('menu-al-label').innerText = menuTexts.alum;
+  document.getElementById('menu-co-label').innerText = menuTexts.constr;
+  document.getElementById('menu-sm-label').innerText = menuTexts.sol;
+
+  // Atualiza títulos das seções
+  Object.entries(translations[lang].sections).forEach(([sectionId, title]) => {
+    const el = document.querySelector(`#${sectionId} > h2`);
+    if (el) el.innerText = title;
+  });
+
+  // 🔤 Atualiza textos de botões dinâmicos (entre subsecções)
+  const buttonTranslations = {
+    'btn-ver-portoes': {
+      pt: 'Ver Portões de Alumínio',
+      en: 'See Aluminum Gates',
+      es: 'Ver Portones de Aluminio',
+      fr: 'Voir Portails en Aluminium'
+    },
+    'btn-ver-tapavistas': {
+      pt: 'Ver Tapa Vistas de Alumínio',
+      en: 'See Aluminum Privacy Screens',
+      es: 'Ver Tapavistas de Aluminio',
+      fr: 'Voir Brise-vue en Aluminium'
+    },
+    'btn-ver-portoes-ferro': {
+      pt: 'Ver Portões de Ferro',
+      en: 'See Iron Gates',
+      es: 'Ver Portones de Hierro',
+      fr: 'Voir Portails en Fer'
+    },
+    'btn-ver-tapavistas-ferro': {
+      pt: 'Ver Tapa Vistas de Ferro',
+      en: 'See Iron Privacy Screens',
+      es: 'Ver Tapavistas de Hierro',
+      fr: 'Voir Brise-vue en Fer'
+    },
+    'btn-ver-escadas-ferro': {
+      pt: 'Ver Escadas de Ferro',
+      en: 'See Iron Stairs',
+      es: 'Ver Escaleras de Hierro',
+      fr: 'Voir Escaliers en Fer'
+    },
+    'btn-ver-guardas-ferro': {
+      pt: 'Ver Guardas de Ferro',
+      en: 'See Iron Railings',
+      es: 'Ver Barandillas de Hierro',
+      fr: 'Voir Garde-corps en Fer'
+    }
+
+  };
+
+  // Atualiza todos os botões existentes com ID correspondente
+  Object.entries(buttonTranslations).forEach(([btnId, texts]) => {
+    const btn = document.getElementById(btnId);
+    if (btn) btn.innerText = texts[lang] || texts['pt'];
+  });
+}
+
+
+
+
+
+  // Modal control functions
+  let modalProject = null;
+  let modalIndex = 0;
+
+  function openModal(projKey) {
+    modalProject = projKey;
+    modalIndex = 0;
+    updateModal();
+    const modal = document.getElementById('project-modal');
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('project-modal');
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+    modalProject = null;
+    modalIndex = 0;
+  }
+
+  function updateModal() {
+    if (!modalProject) return;
+    const proj = projectsData[modalProject];
+    if (!proj) return;
+    const imgEl = document.getElementById('modal-img');
+    const descEl = document.getElementById('modal-description');
+    imgEl.src = proj.images && proj.images[modalIndex] ? proj.images[modalIndex] : '';
+    descEl.innerText = proj.descriptions && proj.descriptions[currentLang] ? proj.descriptions[currentLang] : '';
+  }
+
+  function modalPrev() {
+    if (!modalProject) return;
+    const imgCount = (projectsData[modalProject].images || []).length;
+    if (imgCount === 0) return;
+    modalIndex = (modalIndex - 1 + imgCount) % imgCount;
+    updateModal();
+  }
+
+  function modalNext() {
+    if (!modalProject) return;
+    const imgCount = (projectsData[modalProject].images || []).length;
+    if (imgCount === 0) return;
+    modalIndex = (modalIndex + 1) % imgCount;
+    updateModal();
+  }
+
+  document.getElementById('project-modal').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+    else if (e.key === 'ArrowLeft') modalPrev();
+    else if (e.key === 'ArrowRight') modalNext();
+  });
+
+// Controle amélioré do modal-img para pinch-to-zoom e swipe separados, e opção fullscreen ao clicar
+(function() {
+  const modalImg = document.getElementById('modal-img');
+  let startX = 0, endX = 0, isDragging = false;
+  let lastTouchDistance = null;
+
+  modalImg.style.cursor = 'pointer';
+
+  // Detecta o início do touch
+  modalImg.addEventListener('touchstart', e => {
+    if (e.touches.length === 1) {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+      lastTouchDistance = null;
+    } else if (e.touches.length === 2) {
+      // Pinch zoom começa
+      isDragging = false;
+      lastTouchDistance = getTouchDistance(e.touches);
+      // Define transform origin para o centro do gesto
+      let centerX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+      let centerY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+      const rect = modalImg.getBoundingClientRect();
+      const originX = ((centerX - rect.left) / rect.width) * 100;
+      const originY = ((centerY - rect.top) / rect.height) * 100;
+      modalImg.style.transformOrigin = `${originX}% ${originY}%`;
+    }
+  }, { passive: false });
+
+  // Detecta movimento do touch
+  modalImg.addEventListener('touchmove', e => {
+    if (e.touches.length === 1 && isDragging) {
+      endX = e.touches[0].clientX;
+    } else if (e.touches.length === 2) {
+      e.preventDefault(); // impede scroll da página
+      let currentDistance = getTouchDistance(e.touches);
+      let scale = 1;
+      if (lastTouchDistance) {
+        scale = currentDistance / lastTouchDistance;
+      }
+      lastTouchDistance = currentDistance;
+
+      const currentTransform = window.getComputedStyle(modalImg).transform;
+      let matrix = currentTransform === 'none' ? [1,0,0,1,0,0] : currentTransform.match(/matrix3d\((.+)\)/) ? currentTransform.match(/matrix3d\((.+)\)/)[1].split(', ') : currentTransform.match(/matrix\((.+)\)/)[1].split(', ');
+      let currentScaleX = parseFloat(matrix[0]);
+      let currentScaleY = parseFloat(matrix[3]);
+      let newScaleX = currentScaleX * scale;
+      let newScaleY = currentScaleY * scale;
+      newScaleX = Math.min(Math.max(1, newScaleX), 4);
+      newScaleY = Math.min(Math.max(1, newScaleY), 4);
+      modalImg.style.transform = `scale(${newScaleX}, ${newScaleY})`;
+    }
+  }, { passive: false });
+
+  // Detecta fim do toque para swipe
+  modalImg.addEventListener('touchend', e => {
+    if (!isDragging) return;
+    isDragging = false;
+    const diffX = endX - startX;
+    const threshold = 50;
+    if (Math.abs(diffX) > threshold) {
+      if (diffX > 0) modalPrev();
+      else modalNext();
+    }
+    endX = 0;
+    startX = 0;
+  });
+
+  // Função auxiliar para distância entre dois toques
+  function getTouchDistance(touches) {
+    const [touch1, touch2] = touches;
+    const dx = touch2.clientX - touch1.clientX;
+    const dy = touch2.clientY - touch1.clientY;
+    return Math.hypot(dx, dy);
+  }
+
+  // Toggle tela cheia ao clicar
+  modalImg.addEventListener('click', () => {
+    // Se a imagem estiver zoomada (>1), resetar zoom ao clicar
+    const currentTransform = modalImg.style.transform;
+    if (currentTransform && currentTransform !== '' && currentTransform !== 'scale(1)') {
+      modalImg.style.transform = 'scale(1)';
+      return;
+    }
+
+    // Se não for fullscreen, ativa fullscreen, se for, sai
+    if (!document.fullscreenElement) {
+      if (modalImg.requestFullscreen) modalImg.requestFullscreen();
+      else if (modalImg.webkitRequestFullscreen) modalImg.webkitRequestFullscreen();
+      else if (modalImg.msRequestFullscreen) modalImg.msRequestFullscreen();
+    } else {
+      if (document.exitFullscreen) document.exitFullscreen();
+      else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+      else if (document.msExitFullscreen) document.msExitFullscreen();
+    }
+  });
+
+  // Reset zoom ao sair do fullscreen
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement) {
+      modalImg.style.transform = 'scale(1)';
+      modalImg.style.transformOrigin = '50% 50%';
+    }
+  });
+})();
+
+
+const btnFullscreen = document.getElementById('btn-fullscreen');
+const modalImg = document.getElementById('modal-img');
+
+btnFullscreen.addEventListener('click', (e) => {
+  e.stopPropagation(); // para não disparar outros eventos do modal
+
+  if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
+    if (modalImg.requestFullscreen) {
+      modalImg.requestFullscreen().catch(() => alert('Fullscreen não suportado ou permitido'));
+    } else if (modalImg.webkitRequestFullscreen) {
+      modalImg.webkitRequestFullscreen();
+    } else if (modalImg.msRequestFullscreen) {
+      modalImg.msRequestFullscreen();
+    }
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    }
+  }
+});
+
+
+setLanguage(currentLang);
+showSection('Home');
+
+</script>
+<script>
+  const introContainer = document.getElementById('intro-video-container');
+  const introVideo = document.getElementById('intro-video');
+  let idleTimer;
+  let firstClick = true;
+
+  // ✅ Mantém o vídeo sempre a repetir
+  introVideo.loop = true;
+  introVideo.autoplay = true;
+  introVideo.muted = true;
+  introVideo.playsInline = true;
+
+  // Quando o utilizador clica:
+  // 1º toque → fullscreen
+  // 2º toque → fecha o vídeo e mostra o catálogo
+  introContainer.addEventListener('click', () => {
+    if (firstClick) {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      }
+      firstClick = false;
+    } else {
+      closeIntro();
+    }
+  });
+
+  function closeIntro() {
+    introContainer.classList.add('fade-out');
+    setTimeout(() => {
+      introContainer.style.display = 'none';
+      resetIdleTimer();
+    }, 800);
+  }
+
+  // === 5 MINUTOS DE INATIVIDADE VOLTA AO VÍDEO ===
+  function resetIdleTimer() {
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(showIntro, 5 * 60 * 1000); // 5 minutos
+  }
+
+  function showIntro() {
+    introContainer.style.display = 'flex';
+    setTimeout(() => introContainer.classList.remove('fade-out'), 10);
+  }
+
+  // Reinicia o temporizador em qualquer interação
+  ['mousemove','click','keydown','wheel','touchstart'].forEach(evt => {
+    document.addEventListener(evt, () => {
+      if (introContainer.style.display === 'none') resetIdleTimer();
+    });
+  });
+</script>
+
+<script>
+// === MONTRA AUTOMÁTICA + SAÍDA SECRETA + BOTÃO DE REATIVAÇÃO ===
+document.addEventListener("DOMContentLoaded", () => {
+  const root = document.documentElement;
+  const introContainer = document.getElementById('intro-video-container');
+  let pressTimer = null;
+  // 1️⃣ Entra em fullscreen ao primeiro toque
+  function enterFullscreen() {
+    if (!document.fullscreenElement) {
+      if (root.requestFullscreen) root.requestFullscreen();
+      else if (root.webkitRequestFullscreen) root.webkitRequestFullscreen();
+      else if (root.msRequestFullscreen) root.msRequestFullscreen();
+    }
+  }
+  document.addEventListener("click", enterFullscreen, { once: true });
+
+  // 2️⃣ Saída secreta após 15 segundos de toque contínuo
+  function startHoldExit() {
+    pressTimer = setTimeout(() => {
+      if (document.fullscreenElement) {
+        // Sai do fullscreen
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+        else if (document.msExitFullscreen) document.msExitFullscreen();
+      }
+      alert("🔓 Modo montra desativado");
+      //reactivateBtn.style.display = "block"; // mostra botão de reativar
+    }, 15000); // 15 segundos
+  }
+
+  function cancelHoldExit() {
+    clearTimeout(pressTimer);
+  }
+
+  // Aplica a qualquer parte da tela
+  document.body.addEventListener("touchstart", startHoldExit);
+  document.body.addEventListener("mousedown", startHoldExit);
+  document.body.addEventListener("touchend", cancelHoldExit);
+  document.body.addEventListener("mouseup", cancelHoldExit);
+
+  // 3️⃣ Botão para reativar o modo montra
+  reactivateBtn.addEventListener("click", () => {
+    reactivateBtn.style.display = "none";
+    enterFullscreen();
+    alert("✅ Modo montra reativado");
+  });
+});
+</script>
+
+<!-- CMS admin panel (hidden by default) -->
+<!-- CMS removed from public page. Use admin/index.html for CMS access. -->
+
+</body>
+<style>
+.project-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin: 30px auto 0 auto;
+  width: 100%;
+}
+
+.project-actions .gate-category-btn {
+  padding: 12px 28px;
+  font-weight: 700;
+  background: #2c752c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, opacity 0.6s, transform 0.6s;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInButton 0.6s ease forwards;
+}
+
+.project-actions .gate-category-btn:hover {
+  background: #1e5c1e;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
+}
+
+@keyframes fadeInButton {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</html>
