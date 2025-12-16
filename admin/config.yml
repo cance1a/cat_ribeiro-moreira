@@ -4,7 +4,7 @@ backend:
   repo: cance1a/cat_ribeiro-moreira
   branch: master
   client_id: Ov23liFuBzHGVfeQwHtv
-  base_url: https://deluxe-treacle-5da07a.netlify.app
+  base_url: https://api.netlify.com
 
 media_folder: "assets/img"
 public_folder: "/assets/img"
