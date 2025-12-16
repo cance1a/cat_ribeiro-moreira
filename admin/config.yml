@@ -3,6 +3,7 @@ backend:
   name: github
   repo: cance1a/cat_ribeiro-moreira
   branch: master
+  client_id: Ov23liFuBzHGVfeQwHtv
 
 media_folder: "assets/img"
 public_folder: "/assets/img"
