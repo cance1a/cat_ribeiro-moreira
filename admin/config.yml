@@ -1,11 +1,8 @@
 
 backend:
-  name: auth0
-  domain: dev-b6awcuk3v6cfyfee.us.auth0.com
-  client_id: NNaf6nAhAu2mi6RjN4ysknIUAxxR1zUO
-  redirect_uri: https://deluxe-treacle-5da07a.netlify.app/admin/
-  # branch: main
-  # squash_merges: true
+  name: github
+  repo: cance1a/cat_ribeiro-moreira
+  branch: master
 
 media_folder: "assets/img"
 public_folder: "/assets/img"
