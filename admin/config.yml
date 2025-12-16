@@ -15,7 +15,7 @@ collections:
     extension: "json"
     fields:
       - { name: "title", label: "Título", widget: "string", required: false }
-      - { name: "image", label: "Imagem", widget: "image" }
+      - { name: "image", label: "Imagem", widget: "image", allow_external_url: true }
       - { name: "description_pt", label: "Descrição (PT)", widget: "text" }
       - { name: "description_en", label: "Descrição (EN)", widget: "text" }
       - { name: "description_es", label: "Descrição (ES)", widget: "text" }
@@ -29,7 +29,7 @@ collections:
     extension: "json"
     fields:
       - { name: "title", label: "Título", widget: "string", required: false }
-      - { name: "image", label: "Imagem", widget: "image" }
+      - { name: "image", label: "Imagem", widget: "image", allow_external_url: true }
       - { name: "description_pt", label: "Descrição (PT)", widget: "text" }
       - { name: "description_en", label: "Descrição (EN)", widget: "text" }
       - { name: "description_es", label: "Descrição (ES)", widget: "text" }
@@ -43,7 +43,7 @@ collections:
     extension: "json"
     fields:
       - { name: "title", label: "Título", widget: "string", required: false }
-      - { name: "image", label: "Imagem", widget: "image" }
+      - { name: "image", label: "Imagem", widget: "image", allow_external_url: true }
       - { name: "description_pt", label: "Descrição (PT)", widget: "text" }
       - { name: "description_en", label: "Descrição (EN)", widget: "text" }
       - { name: "description_es", label: "Descrição (ES)", widget: "text" }
